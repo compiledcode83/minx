@@ -1,8 +1,8 @@
 var browserSync = require('browser-sync'),
     del = require('del'),
     gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    sourcemaps = require('gulp-sourcemaps');
+    sass = require('gulp-sass');
+    //sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task('clean', function clean(done){
@@ -18,14 +18,14 @@ gulp.task('copy:html', function copyHTML(){
 
 gulp.task('sass', function compileSass(){
   return gulp.src('./src/*.scss')
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(sass({
       errLogToConsole: true,
       outputStyle: 'nested',
       precision: 10,
       sourceComments: false
     }))
-    .pipe(sourcemaps.write('.'))
+    //.pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./target'));
 });
 
