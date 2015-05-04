@@ -1,0 +1,34 @@
+
+$base-font-size: 16px !default;
+
+
+@function _convert-to-em($pixel-value, $base: $base-font-size) {
+  $value: strip-unit($pixel-value);
+
+  @if $value == 0 {
+    @return 0;
+  }
+
+  @return $value / strip-unit($base) * 1em;
+}
+
+
+// Convert one or more pixel values to their em equivalents.
+//
+//   $base-font-size: 16px
+//
+//   em(24px) //-> 1.5em
+//
+//   // custom base font size of 12px
+//   em(24px 0 0px 36px, 12px) //-> 2em 0 0 3em
+//
+@function em($pixel-values, $base: $base-font-size) {
+  $count: length($pixel-values);
+  $em-values: ();
+
+  @for $i from 1 through $count {
+    $em-values: append($em-values, _convert-to-em(nth($pixel-values, $i), $base));
+  }
+
+  @return $em-values;
+}
