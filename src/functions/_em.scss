@@ -2,6 +2,7 @@
 $base-font-size: 16px !default;
 
 
+// Internal helper used by @function em()
 @function _convert-to-em($pixel-value, $base: $base-font-size) {
   $value: strip-unit($pixel-value);
 
@@ -13,7 +14,7 @@ $base-font-size: 16px !default;
 }
 
 
-// Convert one or more pixel values to their em equivalents.
+// Convert one or more pixel values to their `em` equivalents.
 //
 //   $base-font-size: 16px
 //
