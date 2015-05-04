@@ -1,0 +1,55 @@
+
+// Set `box-sizing` of root element to `border-box`. This setting
+// will be inherited by child elements. See: http://goo.gl/xT2qu0
+html {
+  box-sizing: border-box;
+}
+
+
+// Inherit `box-sizing` for easier overriding.
+// See: http://goo.gl/xT2qu0
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+// Remove default margins
+blockquote,
+body,
+dd,
+dl,
+fieldset,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+ol,
+p,
+pre,
+ul {
+  margin: 0;
+}
+
+
+// Remove default borders
+fieldset,
+iframe {
+  border: 0;
+}
+
+
+// Remove default padding
+fieldset,
+legend,
+ol,
+td,
+th,
+ul {
+  padding: 0;
+}

@@ -1,0 +1,13 @@
+
+// 1. Address `overflow` set to `hidden` in IE 8/9/10/11.
+// 2. Make it obvious that button is clickable.
+// 3. Reset default cursor for disabled elements.
+//
+button {
+  overflow: visible; // [1]
+  cursor: pointer;   // [2]
+
+  &[disabled] {
+    cursor: default; // [3]
+  }
+}

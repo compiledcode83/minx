@@ -1,0 +1,10 @@
+
+// Micro clearfix for containing floats.
+// See: http://goo.gl/zcbtis
+@mixin clearfix {
+  &:after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}

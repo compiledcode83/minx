@@ -1,0 +1,63 @@
+
+$mq-breakpoints: (
+  small: rem(0),
+  medium: rem(640),
+  large: rem(1200),
+  xlarge: rem(1440),
+  xxlarge: rem(1920)
+) !default;
+
+
+// Internal helper used by @mixin media-query
+@function _mq-width($value) {
+  $width: 0;
+
+  @if map-has-key($mq-breakpoints, $value) {
+    $width: map-get($mq-breakpoints, $value);
+  }
+  @else if type-of($value) == "number" {
+    $width: rem($value);
+  }
+
+  @return strip-unit($width) * 1em;
+}
+
+
+// @example
+//
+//   @include media-query(medium) {
+//     color: green;
+//   }
+//
+//   @include media-query($max: medium) {
+//     color: purple;
+//   }
+//
+//   @include media-query(medium, large) {
+//     color: red;
+//   }
+//
+//   @include media-query(540px, 840) {
+//     color: green;
+//   }
+//
+//   @include media-query($type: print) {
+//     color: black;
+//   }
+//
+@mixin media-query($min: null, $max: null, $type: "screen") {
+  $query: $type;
+
+  @if $min != null {
+    $query: $query + " and (min-width: #{_mq-width($min)})";
+  }
+
+  @if $max != null {
+    $width: _mq-width($max) - (1/16);
+    $query: $query + " and (max-width: #{$width})";
+  }
+
+  @media #{$query} {
+    @content;
+  }
+}
