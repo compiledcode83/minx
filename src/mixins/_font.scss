@@ -1,7 +1,7 @@
 
 
 @mixin font($size, $line-height: null, $weight: null, $style: null) {
-  font-size: $size;
+  font-size: rem($size);
 
   @if $line-height {
     line-height: $line-height / $size;
