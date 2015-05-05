@@ -1,17 +1,21 @@
 
 
-@mixin font($size, $line-height: null, $weight: null, $style: null) {
+@mixin font($size, $line-height: null, $weight: null, $style: null, $family: null) {
+  @if $family {
+    font-family: $family;
+  }
+
   font-size: rem($size);
 
   @if $line-height {
     line-height: $line-height / $size;
   }
 
-  @if $weight {
-    font-weight: $weight;
-  }
-
   @if $style {
     font-style: $style;
+  }
+
+  @if $weight {
+    font-weight: $weight;
   }
 }
