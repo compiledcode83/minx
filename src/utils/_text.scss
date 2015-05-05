@@ -1,0 +1,26 @@
+
+.u-txt-break {
+  word-wrap: break-word !important;
+}
+
+
+.u-txt-center {
+  text-align: center !important;
+}
+
+
+.u-txt-left {
+  text-align: left !important;
+}
+
+
+.u-txt-right {
+  text-align: right !important;
+}
+
+
+.u-txt-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
