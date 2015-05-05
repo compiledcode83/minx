@@ -1,0 +1,20 @@
+
+$table-stripe-bg-color : #f6f6f6 !default;
+$table-stripe-type : even !default; // even | odd | {number}
+
+
+.table {
+  width: 100%;
+}
+
+
+.table--fixed {
+  table-layout: fixed;
+}
+
+
+.table--striped {
+  tr:nth-of-type(#{$table-stripe-type}) {
+    background: $table-stripe-bg-color;
+  }
+}
