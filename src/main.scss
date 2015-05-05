@@ -2,11 +2,14 @@
 "settings";
 
 @import
+"functions/em",
 "functions/rem",
 "functions/strip-unit";
 
 @import
 "mixins/clearfix",
+"mixins/font",
+"mixins/font-smoothing",
 "mixins/media-query";
 
 @import
@@ -18,7 +21,9 @@
 "base/table";
 
 @import
-"utils/accessibility";
+"utils/accessibility",
+"utils/clear",
+"utils/text";
 
 @import
 "components/table";
