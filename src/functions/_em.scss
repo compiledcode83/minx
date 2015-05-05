@@ -25,6 +25,11 @@ $base-font-size: 16px !default;
 //
 @function em($pixel-values, $base: $base-font-size) {
   $count: length($pixel-values);
+
+  @if $count == 1 {
+    @return _convert-to-em($pixel-values);
+  }
+
   $em-values: ();
 
   @for $i from 1 through $count {

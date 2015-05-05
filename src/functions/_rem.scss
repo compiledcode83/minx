@@ -23,6 +23,11 @@ $base-font-size: 16px !default;
 //
 @function rem($pixel-values) {
   $count: length($pixel-values);
+
+  @if $count == 1 {
+    @return _convert-to-rem($pixel-values);
+  }
+
   $rem-values: ();
 
   @for $i from 1 through $count {
