@@ -1,6 +1,6 @@
 
 
-@mixin font-feature($settings) {
+@mixin font-feature($settings...) {
   -webkit-font-feature-settings: $settings;
   -moz-font-feature-settings: $settings;
   font-feature-settings: $settings;
