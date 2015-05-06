@@ -1,8 +1,25 @@
 var browserSync = require('browser-sync'),
+    bump = require('gulp-bump'),
     del = require('del'),
     gulp = require('gulp'),
     sass = require('gulp-sass');
     //sourcemaps = require('gulp-sourcemaps');
+
+var manifests = ['./bower.json', './package.json'];
+
+
+gulp.task('bump', function(){
+  return gulp.src(manifests)
+    .pipe(bump())
+    .pipe(gulp.dest('./'));
+});
+
+
+gulp.task('bump:minor', function(){
+  return gulp.src(manifests)
+    .pipe(bump({type: 'minor'}))
+    .pipe(gulp.dest('./'));
+});
 
 
 gulp.task('clean', function clean(done){
