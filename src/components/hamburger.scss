@@ -1,0 +1,42 @@
+
+$hamburger-line-width: 100% !default;
+$hamburger-line-height: 4px !default;
+$hamburger-line-1-y: 0 !default;;
+$hamburger-line-2-y: $hamburger-line-height * 2 !default;
+$hamburger-line-3-y: $hamburger-line-height * 4 !default;
+$hamburger-line-color: #333 !default;
+
+$hamburger-container-class: "hamburger" !default;
+$hamburger-line-class: "#{$hamburger-container-class}__item" !default;
+
+$hamburger-container-padding: 4px !default;
+$hamburger-container-width: $hamburger-container-padding * 2 + 30px !default;
+$hamburger-container-height: $hamburger-line-height * 5 !default;
+
+
+
+@mixin hamburger() {
+  .#{$hamburger-container-class} {
+    display: block;
+    border: 0;
+    padding: $hamburger-container-padding;
+    width: $hamburger-container-width;
+    //height: $hamburger-container-height;
+    cursor: pointer;
+  }
+
+  .#{$hamburger-line-class} {
+    display: block;
+    margin-bottom: $hamburger-line-height;
+    width: $hamburger-line-width;
+    height: $hamburger-line-height;
+    background: $hamburger-line-color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+@include hamburger();
