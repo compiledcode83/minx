@@ -1,0 +1,33 @@
+
+// 1. Address `overflow` set to `hidden` in IE 8/9/10/11.
+//
+// 2. Make buttons inherit font styles - necessary when
+//    styling <input> elements as buttons.
+//
+// 3. Make it obvious that button is clickable.
+//
+// 4. Normalize styles for <a> elements as buttons.
+//
+// 5. Reset default cursor for disabled elements.
+//
+// 6. Remove inner padding and border in Firefox 4+.
+//
+@mixin button {
+  border: 0;
+  overflow: visible;     // [1]
+  font-family: inherit;  // [2]
+  cursor: pointer;       // [3]
+
+  display: inline-block; // [4]
+  text-align: center;    // [4]
+  text-decoration: none; // [4]
+
+  &[disabled] {
+    cursor: default; // [5]
+  }
+
+  &::-moz-focus-inner {
+    border: 0;  // [6]
+    padding: 0; // [6]
+  }
+}
