@@ -1,9 +1,8 @@
 
-$grid-column-class-prefix: 'g-col';
-$grid-row-class-prefix: 'g-row';
+$grid-column-class-prefix: 'g-col' !default;
+$grid-row-class-prefix: 'g-row' !default;
 
 $grid-max-width: 1000px !default;
-
 $grid-total-columns: 12 !default;
 
 $grid-gutter-size: 30px !default;
@@ -14,7 +13,6 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 @function grid-column-width($num-columns, $total-columns: $grid-total-columns) {
   @return percentage(($num-columns / $total-columns));
 }
-
 
 
 @mixin grid-row() {
@@ -32,8 +30,7 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 }
 
 
-
-@mixin grid-column($column-span: $grid-total-columns, $float: left) {
+@mixin grid-column($float: left) {
   float: $float;
   position: relative;
   padding-left: $grid-gutter-half-size;
@@ -47,15 +44,19 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 
 
 @mixin grid-column-classes() {
+  .#{$grid-column-class-prefix} {
+    @include grid-column;
+  }
+
   @for $i from 1 through $grid-total-columns {
     .#{$grid-column-class-prefix}-#{$i} {
+      @extend .#{$grid-column-class-prefix};
       width: grid-column-width($i);
     }
   }
 
   @for $i from 1 through $grid-total-columns - 1 {
     .#{$grid-column-class-prefix}-offset-#{$i} {
-      //@include grid-column($column-span: $i);
       @include grid-column-offset($i);
     }
   }
