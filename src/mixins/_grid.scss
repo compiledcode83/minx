@@ -1,5 +1,6 @@
 
-$grid-class-prefix: 'g-col';
+$grid-column-class-prefix: 'g-col';
+$grid-row-class-prefix: 'g-row';
 
 $grid-max-width: 1000px !default;
 
@@ -22,6 +23,12 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
   max-width: $grid-max-width;
 
   @include clearfix;
+
+  & .#{$grid-row-class-prefix} {
+    margin-left: -$grid-gutter-half-size;
+    margin-right: -$grid-gutter-half-size;
+    width: auto;
+  }
 }
 
 
@@ -34,12 +41,22 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 }
 
 
+@mixin grid-column-offset($offset) {
+  margin-left: grid-column-width($offset);
+}
 
-@mixin grid-columns() {
+
+@mixin grid-column-classes() {
   @for $i from 1 through $grid-total-columns {
-    .#{$grid-class-prefix}-#{$i} {
-      //@include grid-column($column-span: $i);
+    .#{$grid-column-class-prefix}-#{$i} {
       width: grid-column-width($i);
+    }
+  }
+
+  @for $i from 1 through $grid-total-columns - 1 {
+    .#{$grid-column-class-prefix}-offset-#{$i} {
+      //@include grid-column($column-span: $i);
+      @include grid-column-offset($i);
     }
   }
 }
