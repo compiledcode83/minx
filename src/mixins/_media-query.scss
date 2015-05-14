@@ -1,5 +1,8 @@
+//===================================================================
+//  Media-query
+//===================================================================
 
-$mq-breakpoints: (
+$media-query-breakpoints: (
   small: rem(0),
   medium: rem(640),
   large: rem(1200),
@@ -9,11 +12,11 @@ $mq-breakpoints: (
 
 
 // Internal helper used by @mixin media-query
-@function _mq-width($value) {
+@function _media-query-width($value) {
   $width: 0;
 
-  @if map-has-key($mq-breakpoints, $value) {
-    $width: map-get($mq-breakpoints, $value);
+  @if map-has-key($media-query-breakpoints, $value) {
+    $width: map-get($media-query-breakpoints, $value);
   }
   @else if type-of($value) == "number" {
     $width: rem($value);
@@ -49,11 +52,11 @@ $mq-breakpoints: (
   $query: $type;
 
   @if $min != null {
-    $query: $query + " and (min-width: #{_mq-width($min)})";
+    $query: $query + " and (min-width: #{_media-query-width($min)})";
   }
 
   @if $max != null {
-    $width: _mq-width($max) - (1/16);
+    $width: _media-query-width($max) - (1/16);
     $query: $query + " and (max-width: #{$width})";
   }
 
