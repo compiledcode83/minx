@@ -1,3 +1,6 @@
+//===================================================================
+//  Grid
+//===================================================================
 
 $grid-column-class-prefix: 'g-col' !default;
 $grid-row-class-prefix: 'g-row' !default;
@@ -44,13 +47,18 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 
 
 @mixin grid-column-classes() {
-  .#{$grid-column-class-prefix} {
+  %#{$grid-column-class-prefix} {
     @include grid-column;
+  }
+
+  .#{$grid-column-class-prefix} {
+    @extend %#{$grid-column-class-prefix};
+    width: 100%;
   }
 
   @for $i from 1 through $grid-total-columns {
     .#{$grid-column-class-prefix}-#{$i} {
-      @extend .#{$grid-column-class-prefix};
+      @extend %#{$grid-column-class-prefix};
       width: grid-column-width($i);
     }
   }
