@@ -22,7 +22,7 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 
   @include clearfix;
 
-  & .#{$grid-row-class-prefix} {
+  & & {
     margin-left: -$grid-gutter-half-size;
     margin-right: -$grid-gutter-half-size;
     width: auto;
