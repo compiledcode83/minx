@@ -1,13 +1,13 @@
 {
   "name": "sass-lib",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "description": "Sass lib",
   "devDependencies": {
     "browser-sync": "~2.7.1",
     "del": "~1.1.1",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-bump": "~0.3.0",
-    "gulp-sass": "~2.0.0",
+    "gulp-sass": "~2.0.1",
     "gulp-sourcemaps": "~1.5.2"
   },
   "repository": {
