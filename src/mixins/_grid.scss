@@ -2,14 +2,16 @@
 //  Grid
 //===================================================================
 
-$grid-column-class-prefix: 'g-col' !default;
-$grid-row-class-prefix: 'g-row' !default;
+$grid-column-class: 'g-col' !default;
+$grid-row-class: 'g-row' !default;
 
 $grid-max-width: 1000px !default;
 $grid-total-columns: 12 !default;
 
 $grid-gutter-size: 30px !default;
 $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
+
+$grid-column-offset-classes: false !default;
 
 
 
@@ -46,26 +48,34 @@ $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 }
 
 
-@mixin grid-column-classes() {
-  %#{$grid-column-class-prefix} {
+@mixin grid-classes($include-row: true, $include-offset: true) {
+  @if $include-row {
+    .#{$grid-row-class} {
+      @include grid-row;
+    }
+  }
+
+  %#{$grid-column-class} {
     @include grid-column;
   }
 
-  .#{$grid-column-class-prefix} {
-    @extend %#{$grid-column-class-prefix};
+  .#{$grid-column-class} {
+    @extend %#{$grid-column-class};
     width: 100%;
   }
 
   @for $i from 1 through $grid-total-columns {
-    .#{$grid-column-class-prefix}-#{$i} {
-      @extend %#{$grid-column-class-prefix};
+    .#{$grid-column-class}-#{$i} {
+      @extend %#{$grid-column-class};
       width: grid-column-width($i);
     }
   }
 
-  @for $i from 1 through $grid-total-columns - 1 {
-    .#{$grid-column-class-prefix}-offset-#{$i} {
-      @include grid-column-offset($i);
+  @if $include-offset {
+    @for $i from 1 through $grid-total-columns - 1 {
+      .#{$grid-column-class}-offset-#{$i} {
+        @include grid-column-offset($i);
+      }
     }
   }
 }
