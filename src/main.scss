@@ -29,4 +29,8 @@
 "utils/text";
 
 @import
+"components/hamburger",
 "components/table";
+
+
+@include hamburger;
