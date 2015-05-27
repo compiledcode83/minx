@@ -2,13 +2,11 @@
   "name": "sass-lib",
   "version": "0.3.13",
   "description": "Sass lib",
-  "keywords": [
-    "sass",
-    "scss",
-    "mixins",
-    "responsive",
-    "grid"
-  ],
+  "homepage": "https://github.com/r-park/sass-lib",
+  "repository": "https://github.com/r-park/sass-lib.git",
+  "author": "Richard Park",
+  "license": "MIT",
+
   "ignore": [
     "**/.*",
     "gulpfile.js",
@@ -18,6 +16,13 @@
     "target",
     "tmp"
   ],
-  "author": "Richard Park",
-  "license": "MIT"
+
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "mixin",
+    "responsive",
+    "grid"
+  ]
 }

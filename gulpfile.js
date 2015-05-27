@@ -1,8 +1,10 @@
 var browserSync = require('browser-sync'),
     bump = require('gulp-bump'),
+    csslint = require('gulp-csslint'),
     del = require('del'),
     gulp = require('gulp'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    scsslint = require('gulp-scss-lint');
     //sourcemaps = require('gulp-sourcemaps');
 
 var manifests = ['./bower.json', './package.json'];
@@ -10,7 +12,7 @@ var manifests = ['./bower.json', './package.json'];
 
 gulp.task('bump', function(){
   return gulp.src(manifests)
-    .pipe(bump())
+    .pipe(bump({type: 'patch'}))
     .pipe(gulp.dest('./'));
 });
 
@@ -33,6 +35,19 @@ gulp.task('copy:html', function copyHTML(){
 });
 
 
+gulp.task('lint:css', function() {
+  return gulp.src('./target/main.css')
+    .pipe(csslint('./.csslintrc'))
+    .pipe(csslint.reporter());
+});
+
+
+gulp.task('lint:scss', function() {
+  return gulp.src('./src/mixins/*.scss')
+    .pipe(scsslint({config: './.scss-lint.yml'}));
+});
+
+
 gulp.task('sass', function compileSass(){
   return gulp.src('./src/*.scss')
     //.pipe(sourcemaps.init())
@@ -47,17 +62,17 @@ gulp.task('sass', function compileSass(){
 });
 
 
-gulp.task('serve', function server(){
-  var bs = browserSync.create();
-
-  bs.init({
-    server: {
-      baseDir: '.'
-    },
-    files: ['target/**/*'],
-    browser: "firefox",
-    port: 7000
-  });
+gulp.task('sync', function server(){
+  browserSync
+    .create()
+    .init({
+      browser: "firefox",
+      files: ['target/**/*'],
+      port: 7000,
+      server: {
+        baseDir: '.'
+      }
+    });
 });
 
 
