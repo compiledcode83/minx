@@ -24,14 +24,8 @@ gulp.task('bump:minor', function(){
 });
 
 
-gulp.task('clean', function clean(done){
+gulp.task('clean:target', function(done){
   del('./target/*', done);
-});
-
-
-gulp.task('copy:html', function copyHTML(){
-  return gulp.src('./src/**/*.html')
-    .pipe(gulp.dest('./target'));
 });
 
 
@@ -67,7 +61,7 @@ gulp.task('sync', function server(){
     .create()
     .init({
       browser: "firefox",
-      files: ['target/**/*'],
+      files: ['target/**/*', 'examples/**/*'],
       port: 7000,
       server: {
         baseDir: '.'
@@ -76,7 +70,6 @@ gulp.task('sync', function server(){
 });
 
 
-gulp.task('default', gulp.series('clean', 'sass', 'copy:html', function watch(){
+gulp.task('default', gulp.series('clean:target', 'sass', function watch(){
   gulp.watch('./src/**/*.scss', gulp.task('sass'));
-  gulp.watch('./src/**/*.html', gulp.task('copy:html'));
 }));
