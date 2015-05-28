@@ -1,8 +1,11 @@
+//===================================================================
+//  EM
+//===================================================================
 
 $base-font-size: 16px !default;
 
 
-@function rem($value, $base: $base-font-size) {
+@function em($value, $base: $base-font-size) {
   $value: strip-unit($value);
 
   @if $value == 0 {
