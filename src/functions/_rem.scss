@@ -2,37 +2,12 @@
 $base-font-size: 16px !default;
 
 
-// Internal helper used by @function rem()
-@function _convert-to-rem($pixel-value) {
-  $value: strip-unit($pixel-value);
+@function rem($value) {
+  $value: strip-unit($value);
 
   @if $value == 0 {
-    @return 0;
+    @return $value;
   }
 
   @return $value / strip-unit($base-font-size) * 1rem;
-}
-
-
-// Convert one or more pixel values to their `rem` equivalents.
-//
-//   $base-font-size: 16px
-//
-//   rem(24px) //-> 1.5rem
-//   rem(24px 0 0px 32px) //-> 1.5rem 0 0 2rem
-//
-@function rem($pixel-values) {
-  $count: length($pixel-values);
-
-  @if $count == 1 {
-    @return _convert-to-rem($pixel-values);
-  }
-
-  $rem-values: ();
-
-  @for $i from 1 through $count {
-    $rem-values: append($rem-values, _convert-to-rem(nth($pixel-values, $i)));
-  }
-
-  @return $rem-values;
 }

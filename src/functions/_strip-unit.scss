@@ -1,15 +1,8 @@
 
-// Strip the unit of measure from the provided $value
+// Strips the unit of measure from the provided $value
 //
-//   strip-unit(6px)   //-> 6
-//   strip-unit(6em)   //-> 6
-//   strip-unit(6rem)  //-> 6
-//   strip-unit("6px") //-> "6px"
+//   strip-unit(6px) //-> 6
 //
 @function strip-unit($value) {
-  @if type-of($value) == "number" {
-    @return $value / ($value * 0 + 1);
-  }
-
-  @return $value;
+  @return $value / ($value * 0 + 1);
 }
