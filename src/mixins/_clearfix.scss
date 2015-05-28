@@ -6,8 +6,8 @@
 // See: http://goo.gl/zcbtis
 @mixin clearfix {
   &:after {
-    display: table;
     clear: both;
-    content: "";
+    content: '';
+    display: table;
   }
 }
