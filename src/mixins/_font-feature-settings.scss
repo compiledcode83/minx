@@ -2,7 +2,7 @@
 //  Font-feature
 //===================================================================
 
-@mixin font-feature($settings...) {
+@mixin font-feature-settings($settings...) {
   -webkit-font-feature-settings: $settings;
   -moz-font-feature-settings: $settings;
   font-feature-settings: $settings;
