@@ -34,8 +34,7 @@ $grid-column-offset-classes: false !default;
   @include clearfix;
 
   & & {
-    margin-left: -$grid-gutter-half-size;
-    margin-right: -$grid-gutter-half-size;
+    margin: 0 -$grid-gutter-half-size;
     width: auto;
   }
 }
