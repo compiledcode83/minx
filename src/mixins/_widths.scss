@@ -18,19 +18,24 @@ $width-util-denominators: (2, 3, 4, 5) !default;
 
 
 @mixin widths($denominator: 12, $prefix: $width-prefix, $inclusive: true) {
-  @if $inclusive {
-    @for $numerator from 1 through $denominator {
+  @for $numerator from 1 through $denominator {
+    @if $numerator < $denominator or $inclusive {
       .#{$prefix}#{$numerator}#{$width-delimiter}#{$denominator} {
         width: $numerator / $denominator * 100%;
       }
     }
   }
-  @else {
-    @for $numerator from 1 to $denominator {
-      .#{$prefix}#{$numerator}#{$width-delimiter}#{$denominator} {
-        width: $numerator / $denominator * 100%;
-      }
-    }
+}
+
+
+@mixin widths-utils($prefix: $width-prefix) {
+  .#{$prefix}1#{$width-delimiter}1,
+  .#{$prefix}full {
+    width: 100%;
+  }
+
+  @each $denominator in $width-util-denominators {
+    @include widths($denominator, $prefix, $inclusive: false);
   }
 }
 
@@ -42,18 +47,7 @@ $width-util-denominators: (2, 3, 4, 5) !default;
 
     @include media-query($min) {
       @include widths($prefix: $prefix);
+      @include widths-utils($prefix: $prefix);
     }
-  }
-}
-
-
-@mixin widths-utils() {
-  @each $denominator in $width-util-denominators {
-    @include widths($denominator, $inclusive: false);
-  }
-
-  .#{$width-prefix}1#{$width-delimiter}1,
-  .#{$width-prefix}full {
-    width: 100%;
   }
 }
