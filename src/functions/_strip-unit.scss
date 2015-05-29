@@ -2,10 +2,6 @@
 //  STRIP-UNIT
 //===================================================================
 
-// Strips the unit of measure from the provided $value.
-//
-//   strip-unit(6px) //-> 6
-//
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
