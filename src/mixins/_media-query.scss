@@ -2,26 +2,32 @@
 //  MEDIA-QUERY
 //===================================================================
 
-$media-query-breakpoints: (
-  small   : 0,
-  medium  : 640px,
-  large   : 1200px,
-  xlarge  : 1440px,
-  xxlarge : 1920px
+$breakpoints: (
+  small  : 0,
+  medium : 640px,
+  large  : 1200px,
+  xlarge : 1440px
+) !default;
+
+
+$breakpoint-prefixes: (
+  small  : sm-,
+  medium : md-,
+  large  : lg-,
+  xlarge : xl-
 ) !default;
 
 
 @function media-query-width($value) {
-  $width: 0;
-
-  @if map-has-key($media-query-breakpoints, $value) {
-    $width: map-get($media-query-breakpoints, $value);
-  }
-  @else if type-of($value) == 'number' {
-    $width: $value;
+  @if map-has-key($breakpoints, $value) {
+    $value: map-get($breakpoints, $value);
   }
 
-  @return em($width);
+  @if $value == 0 {
+    @return $value;
+  }
+
+  @return em($value);
 }
 
 
