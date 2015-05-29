@@ -3,61 +3,45 @@
 //===================================================================
 
 $media-query-breakpoints: (
-  small: rem(0),
-  medium: rem(640),
-  large: rem(1200),
-  xlarge: rem(1440),
-  xxlarge: rem(1920)
+  small   : 0,
+  medium  : 640px,
+  large   : 1200px,
+  xlarge  : 1440px,
+  xxlarge : 1920px
 ) !default;
 
 
-// Internal helper used by @mixin media-query
-@function _media-query-width($value) {
+@function media-query-width($value) {
   $width: 0;
 
   @if map-has-key($media-query-breakpoints, $value) {
     $width: map-get($media-query-breakpoints, $value);
   }
-  @else if type-of($value) == "number" {
-    $width: rem($value);
+  @else if type-of($value) == 'number' {
+    $width: $value;
   }
 
-  @return strip-unit($width) * 1em;
+  @return em($width);
 }
 
 
-// @example
-//
-//   @include media-query(medium) {
-//     color: green;
-//   }
-//
-//   @include media-query($max: medium) {
-//     color: purple;
-//   }
-//
-//   @include media-query(medium, large) {
-//     color: red;
-//   }
-//
-//   @include media-query(540px, 840) {
-//     color: green;
-//   }
-//
-//   @include media-query($type: print) {
-//     color: black;
-//   }
-//
-@mixin media-query($min: null, $max: null, $type: "screen") {
+@mixin media-query($min: null, $max: null, $orientation: null, $type: 'screen') {
   $query: $type;
 
   @if $min != null {
-    $query: $query + " and (min-width: #{_media-query-width($min)})";
+    $min-width: media-query-width($min);
+    @if $min-width > 0 {
+      $query: $query + ' and (min-width: #{$min-width})';
+    }
   }
 
   @if $max != null {
-    $width: _media-query-width($max) - (1/16);
-    $query: $query + " and (max-width: #{$width})";
+    $max-width: media-query-width($max) - (1/16);
+    $query: $query + ' and (max-width: #{$max-width})';
+  }
+
+  @if $orientation != null {
+    $query: $query + ' and (orientation: #{$orientation})';
   }
 
   @media #{$query} {

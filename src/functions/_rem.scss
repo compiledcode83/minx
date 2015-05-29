@@ -2,11 +2,8 @@
 //  REM
 //===================================================================
 
-$base-font-size: 16px !default;
-
-
-@function rem($value) {
-  $value: strip-unit($value);
+@function rem($pixel-value) {
+  $value: strip-unit($pixel-value);
 
   @if $value == 0 {
     @return $value;

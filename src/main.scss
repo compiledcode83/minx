@@ -3,17 +3,20 @@
 
 @import
 "functions/em",
+"functions/map-next",
 "functions/rem",
 "functions/strip-unit";
 
 @import
 "mixins/button",
 "mixins/clearfix",
-"mixins/font",
-"mixins/font-feature",
+"mixins/font-feature-settings",
+"mixins/font-size",
 "mixins/font-smoothing",
 "mixins/grid",
-"mixins/media-query";
+"mixins/media-query",
+"mixins/selection",
+"mixins/widths";
 
 @import
 "base/reset",
@@ -31,6 +34,3 @@
 @import
 "components/hamburger",
 "components/table";
-
-
-@include hamburger;

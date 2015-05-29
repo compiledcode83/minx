@@ -9,14 +9,13 @@
 //
 // 3. Make it obvious that button is clickable.
 //
-// 4. Normalize styles for <a> elements as buttons.
+// 4. Normalize styles for <a> elements styled as buttons.
 //
 // 5. Reset default cursor for disabled elements.
 //
 // 6. Remove inner padding and border in Firefox 4+.
 //
-@mixin button {
-  border: 0;
+@mixin button-base {
   overflow: visible;     // [1]
   font-family: inherit;  // [2]
   cursor: pointer;       // [3]

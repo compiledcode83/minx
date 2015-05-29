@@ -2,8 +2,11 @@
 //  GRID
 //===================================================================
 
-$grid-column-class: 'g-col' !default;
-$grid-row-class: 'g-row' !default;
+$grid-row-class: g-row !default;
+$grid-column-class: g-col !default;
+$grid-offset-class: g-offset- !default;
+$grid-pull-class: g-pull- !default;
+$grid-push-class: g-push- !default;
 
 $grid-max-width: 1000px !default;
 $grid-total-columns: 12 !default;
@@ -11,15 +14,18 @@ $grid-total-columns: 12 !default;
 $grid-gutter-size: 30px !default;
 $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 
-$grid-column-offset-classes: false !default;
-
+$grid-include-row: true !default;
+$grid-include-column: true !default;
+$grid-include-offset: true !default;
+$grid-include-pull: true !default;
+$grid-include-push: true !default;
 
 
 @function grid-column-width($num-columns, $total-columns: $grid-total-columns) {
-  $width: percentage(($num-columns / $total-columns));
+  $width: percentage($num-columns / $total-columns);
 
   @if $width == 0% {
-    $width: 0;
+    @return 0;
   }
 
   @return $width;
@@ -31,7 +37,15 @@ $grid-column-offset-classes: false !default;
   width: 100%;
   max-width: $grid-max-width;
 
-  @include clearfix;
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
 
   & & {
     margin: 0 -$grid-gutter-half-size;
@@ -48,8 +62,8 @@ $grid-column-offset-classes: false !default;
 }
 
 
-@mixin grid-column-offset($offset) {
-  margin-left: grid-column-width($offset);
+@mixin grid-column-offset($num-columns) {
+  margin-left: grid-column-width($num-columns);
 }
 
 
@@ -65,14 +79,12 @@ $grid-column-offset-classes: false !default;
 }
 
 
-
 @mixin grid-classes(
-  $include-row: true,
-  $include-column: true,
-  $include-offset: true,
-  $include-pull: true,
-  $include-push: true) {
-
+  $include-row: $grid-include-row,
+  $include-column: $grid-include-column,
+  $include-offset: $grid-include-offset,
+  $include-pull: $grid-include-pull,
+  $include-push: $grid-include-push) {
 
   // grid row classes
   @if $include-row {
@@ -81,51 +93,36 @@ $grid-column-offset-classes: false !default;
     }
   }
 
-
   // grid column classes
   @if $include-column {
-    %#{$grid-column-class} {
-      @include grid-column;
-    }
-
     .#{$grid-column-class} {
-      @extend %#{$grid-column-class};
+      @include grid-column;
       width: 100%;
-    }
-
-    @for $i from 1 through $grid-total-columns {
-      .#{$grid-column-class}-#{$i} {
-        @extend %#{$grid-column-class};
-        width: grid-column-width($i);
-      }
     }
   }
 
-
   // grid colum offset classes
   @if $include-offset {
-    @for $i from 1 through $grid-total-columns - 1 {
-      .#{$grid-column-class}-offset-#{$i} {
+    @for $i from 1 to $grid-total-columns {
+      .#{$grid-offset-class}#{$i} {
         @include grid-column-offset($i);
       }
     }
   }
 
-
   // grid column pull classes
   @if $include-pull {
-    @for $i from 1 through $grid-total-columns - 1 {
-      .#{$grid-column-class}-pull-#{$i} {
+    @for $i from 1 to $grid-total-columns {
+      .#{$grid-pull-class}#{$i} {
         @include grid-column-pull($i);
       }
     }
   }
 
-
   // grid column push classes
   @if $include-push {
-    @for $i from 1 through $grid-total-columns - 1 {
-      .#{$grid-column-class}-push-#{$i} {
+    @for $i from 1 to $grid-total-columns {
+      .#{$grid-push-class}#{$i} {
         @include grid-column-push($i);
       }
     }

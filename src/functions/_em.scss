@@ -2,11 +2,8 @@
 //  EM
 //===================================================================
 
-$base-font-size: 16px !default;
-
-
-@function em($value, $base: $base-font-size) {
-  $value: strip-unit($value);
+@function em($pixel-value, $base: $base-font-size) {
+  $value: strip-unit($pixel-value);
 
   @if $value == 0 {
     @return $value;
