@@ -38,10 +38,9 @@ $width-util-denominators: (2, 3, 4, 5) !default;
 @mixin widths-responsive() {
   @each $key, $value in $media-query-breakpoints {
     $min: if($value == 0, null, $key);
-    $max: map-next-key($media-query-breakpoints, $key);
     $prefix: map-get($width-breakpoint-prefixes, $key);
 
-    @include media-query($min, $max) {
+    @include media-query($min) {
       @include widths($prefix: $prefix);
     }
   }
