@@ -103,7 +103,7 @@ $grid-include-push: true !default;
 
   // grid colum offset classes
   @if $include-offset {
-    @for $i from 1 to $grid-total-columns {
+    @for $i from 0 to $grid-total-columns {
       .#{$grid-offset-class}#{$i} {
         @include grid-column-offset($i);
       }
@@ -112,7 +112,7 @@ $grid-include-push: true !default;
 
   // grid column pull classes
   @if $include-pull {
-    @for $i from 1 to $grid-total-columns {
+    @for $i from 0 to $grid-total-columns {
       .#{$grid-pull-class}#{$i} {
         @include grid-column-pull($i);
       }
@@ -121,7 +121,7 @@ $grid-include-push: true !default;
 
   // grid column push classes
   @if $include-push {
-    @for $i from 1 to $grid-total-columns {
+    @for $i from 0 to $grid-total-columns {
       .#{$grid-push-class}#{$i} {
         @include grid-column-push($i);
       }
