@@ -2,27 +2,28 @@
 //  GRID
 //===================================================================
 
-$grid-row-class: g-row !default;
-$grid-column-class: g-col !default;
-$grid-offset-class: g-offset- !default;
-$grid-pull-class: g-pull- !default;
-$grid-push-class: g-push- !default;
-
 $grid-max-width: 1000px !default;
 $grid-total-columns: 12 !default;
 
 $grid-gutter-size: 30px !default;
 $grid-gutter-half-size: ($grid-gutter-size / 2) !default;
 
+$grid-row-class: g-row !default;
+$grid-column-class: g-col !default;
+$grid-offset-class: offset- !default;
+$grid-pull-class: pull- !default;
+$grid-push-class: push- !default;
+
 $grid-include-row: true !default;
 $grid-include-column: true !default;
 $grid-include-offset: true !default;
 $grid-include-pull: true !default;
 $grid-include-push: true !default;
+$grid-include-responsive: true !default;
 
 
-@function grid-column-width($num-columns, $total-columns: $grid-total-columns) {
-  $width: percentage($num-columns / $total-columns);
+@function grid-column-width($columns, $total-columns: $grid-total-columns) {
+  $width: percentage($columns / $total-columns);
 
   @if $width == 0% {
     @return 0;
@@ -32,7 +33,7 @@ $grid-include-push: true !default;
 }
 
 
-@mixin grid-row() {
+@mixin grid-row {
   margin: 0 auto;
   width: 100%;
   max-width: $grid-max-width;
@@ -62,20 +63,50 @@ $grid-include-push: true !default;
 }
 
 
-@mixin grid-column-offset($num-columns) {
-  margin-left: grid-column-width($num-columns);
+@mixin grid-offset($columns) {
+  margin-left: grid-column-width($columns);
 }
 
 
-@mixin grid-column-pull($num-columns) {
+@mixin grid-offset-classes($prefix: null) {
+  @for $i from 0 to $grid-total-columns {
+    $suffix: if($i > 0, $i + $width-delimiter + $grid-total-columns, 0);
+    .#{$prefix}#{$grid-offset-class}#{$suffix} {
+      @include grid-offset($i);
+    }
+  }
+}
+
+
+@mixin grid-pull($columns) {
   left: auto;
-  right: grid-column-width($num-columns);
+  right: grid-column-width($columns);
 }
 
 
-@mixin grid-column-push($num-columns) {
-  left: grid-column-width($num-columns);
+@mixin grid-pull-classes($prefix: null) {
+  @for $i from 0 to $grid-total-columns {
+    $suffix: if($i > 0, $i + $width-delimiter + $grid-total-columns, 0);
+    .#{$prefix}#{$grid-pull-class}#{$suffix} {
+      @include grid-pull($i);
+    }
+  }
+}
+
+
+@mixin grid-push($columns) {
+  left: grid-column-width($columns);
   right: auto;
+}
+
+
+@mixin grid-push-classes($prefix: null) {
+  @for $i from 0 to $grid-total-columns {
+    $suffix: if($i > 0, $i + $width-delimiter + $grid-total-columns, 0);
+    .#{$prefix}#{$grid-push-class}#{$suffix} {
+      @include grid-push($i);
+    }
+  }
 }
 
 
@@ -84,16 +115,17 @@ $grid-include-push: true !default;
   $include-column: $grid-include-column,
   $include-offset: $grid-include-offset,
   $include-pull: $grid-include-pull,
-  $include-push: $grid-include-push) {
+  $include-push: $grid-include-push,
+  $include-responsive: $grid-include-responsive) {
 
-  // grid row classes
+  // row class
   @if $include-row {
     .#{$grid-row-class} {
       @include grid-row;
     }
   }
 
-  // grid column classes
+  // column class
   @if $include-column {
     .#{$grid-column-class} {
       @include grid-column;
@@ -101,29 +133,40 @@ $grid-include-push: true !default;
     }
   }
 
-  // grid colum offset classes
+  // column widths
+  @include width-classes($grid-total-columns);
+  @include width-util-classes();
+
+  // colum offset classes
   @if $include-offset {
-    @for $i from 0 to $grid-total-columns {
-      .#{$grid-offset-class}#{$i} {
-        @include grid-column-offset($i);
-      }
-    }
+    @include grid-offset-classes;
   }
 
-  // grid column pull classes
-  @if $include-pull {
-    @for $i from 0 to $grid-total-columns {
-      .#{$grid-pull-class}#{$i} {
-        @include grid-column-pull($i);
-      }
-    }
-  }
+  // breakpoint-specific grid classes
+  @if $include-responsive {
+    @each $key, $value in $breakpoints {
+      $min: if($value == 0, null, $key);
+      $prefix: map_get($breakpoint-prefixes, $key);
 
-  // grid column push classes
-  @if $include-push {
-    @for $i from 0 to $grid-total-columns {
-      .#{$grid-push-class}#{$i} {
-        @include grid-column-push($i);
+      @include media-query($min) {
+        // column widths
+        @include width-classes($grid-total-columns, $prefix);
+        @include width-util-classes($prefix);
+
+        // colum offset classes
+        @if $include-offset {
+          @include grid-offset-classes($prefix);
+        }
+
+        // column pull classes
+        @if $include-pull {
+          @include grid-pull-classes($prefix);
+        }
+
+        // column push classes
+        @if $include-push {
+          @include grid-push-classes($prefix);
+        }
       }
     }
   }
