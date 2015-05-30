@@ -3,12 +3,11 @@
 
 @import
 "functions/em",
-"functions/map-next",
 "functions/rem",
 "functions/strip-unit";
 
 @import
-"mixins/button",
+"mixins/buttons",
 "mixins/clearfix",
 "mixins/font-feature-settings",
 "mixins/font-size",
@@ -19,18 +18,9 @@
 "mixins/widths";
 
 @import
-"base/reset",
-"base/html",
-"base/anchor",
-"base/hr",
-"base/image",
-"base/table";
+"base/reset";
 
 @import
 "utils/accessibility",
 "utils/clearfix",
 "utils/text";
-
-@import
-"components/hamburger",
-"components/table";

@@ -4,6 +4,8 @@
   "description": "Sass lib",
   "homepage": "https://github.com/r-park/sass-lib",
   "repository": "https://github.com/r-park/sass-lib.git",
+  "author": "Richard Park",
+  "license": "MIT",
 
   "devDependencies": {
     "browser-sync": "^2.7.3",
@@ -18,10 +20,9 @@
 
   "keywords": [
     "css",
-    "sass",
-    "scss",
-    "mixin",
+    "grid",
     "responsive",
-    "grid"
+    "sass",
+    "scss"
   ]
 }

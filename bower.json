@@ -19,10 +19,9 @@
 
   "keywords": [
     "css",
-    "sass",
-    "scss",
-    "mixin",
+    "grid",
     "responsive",
-    "grid"
+    "sass",
+    "scss"
   ]
 }
