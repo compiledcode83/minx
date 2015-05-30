@@ -2,7 +2,7 @@
 //  ANCHOR
 //===================================================================
 
-// Remove the gray background color from active links in IE 10.
+// 1. Remove the gray background color from active links in IE 10.
 a {
-  background-color: transparent;
+  background: transparent; // [1]
 }

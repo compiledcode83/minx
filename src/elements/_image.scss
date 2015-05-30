@@ -3,11 +3,20 @@
 //===================================================================
 
 // 1. Remove border when inside <a> element in IE 8/9/10.
+//
 // 2. Fluid-width for responsive layouts.
+//
 // 3. Remove whitespace that appears below <img> elements.
+//
+// 4. Google Maps icons break when max-width is set to 100%.
+//    Disable using Google Maps selector `.gm-style`
 //
 img {
   border: 0;              // [1]
   max-width: 100%;        // [2]
   vertical-align: middle; // [3]
+
+  .gm-style & {
+    max-width: none; // [4]
+  }
 }

@@ -21,6 +21,13 @@
 "base/reset";
 
 @import
+"elements/html",
+"elements/anchor",
+"elements/hr",
+"elements/image",
+"elements/table";
+
+@import
 "utils/accessibility",
 "utils/clearfix",
 "utils/text";
