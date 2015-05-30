@@ -2,7 +2,7 @@
 //  EM
 //===================================================================
 
-@function em($pixel-value, $base: $base-font-size) {
+@function em($pixel-value, $base: $root-font-size) {
   $value: strip-unit($pixel-value);
 
   @if $value == 0 {
