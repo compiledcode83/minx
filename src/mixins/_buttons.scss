@@ -7,29 +7,34 @@
 // 2. Make buttons inherit font styles - necessary when
 //    styling <input> elements as buttons.
 //
-// 3. Make it obvious that button is clickable.
+// 3. Correct inability to style clickable `input` types in iOS.
 //
 // 4. Normalize styles for <a> elements styled as buttons.
 //
-// 5. Reset default cursor for disabled elements.
+// 5. Make it obvious that button is clickable.
 //
-// 6. Remove inner padding and border in Firefox 4+.
+// 6. Reset default cursor for disabled elements.
+//
+// 7. Remove inner padding and border in Firefox 4+.
 //
 @mixin button-base {
   overflow: visible;     // [1]
   font-family: inherit;  // [2]
-  cursor: pointer;       // [3]
+
+  -webkit-appearance: button; // [3]
 
   display: inline-block; // [4]
   text-align: center;    // [4]
   text-decoration: none; // [4]
 
+  cursor: pointer; // [5]
+
   &[disabled] {
-    cursor: default; // [5]
+    cursor: default; // [6]
   }
 
   &::-moz-focus-inner {
-    border: 0;  // [6]
-    padding: 0; // [6]
+    border: 0;  // [7]
+    padding: 0; // [7]
   }
 }
