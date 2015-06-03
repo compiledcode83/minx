@@ -49,7 +49,7 @@ $grid-include-responsive: true !default;
   }
 
   & & {
-    margin: 0 -$grid-gutter-half-size;
+    margin: 0 (-$grid-gutter-half-size);
     width: auto;
   }
 }
