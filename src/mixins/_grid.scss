@@ -63,6 +63,9 @@ $grid-include-responsive: true !default;
 }
 
 
+//===============================================
+// Grid column offset
+//===============================================
 @mixin grid-offset($columns) {
   margin-left: grid-column-width($columns);
 }
@@ -78,6 +81,9 @@ $grid-include-responsive: true !default;
 }
 
 
+//===============================================
+// Grid column pull
+//===============================================
 @mixin grid-pull($columns) {
   left: auto;
   right: grid-column-width($columns);
@@ -94,6 +100,9 @@ $grid-include-responsive: true !default;
 }
 
 
+//===============================================
+// Grid column push
+//===============================================
 @mixin grid-push($columns) {
   left: grid-column-width($columns);
   right: auto;
@@ -110,6 +119,9 @@ $grid-include-responsive: true !default;
 }
 
 
+//===============================================
+// Grid classes
+//===============================================
 @mixin grid-classes(
   $include-row: $grid-include-row,
   $include-column: $grid-include-column,
@@ -146,7 +158,7 @@ $grid-include-responsive: true !default;
   @if $include-responsive {
     @each $key, $value in $breakpoints {
       $min: if($value == 0, null, $key);
-      $prefix: map_get($breakpoint-prefixes, $key);
+      $prefix: map-get($breakpoint-prefixes, $key);
 
       @include media-query($min) {
         // column widths

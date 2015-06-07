@@ -1,23 +1,20 @@
 {
   "name": "sass-lib",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Sass lib",
   "homepage": "https://github.com/r-park/sass-lib",
   "repository": "https://github.com/r-park/sass-lib.git",
   "author": "Richard Park",
   "license": "MIT",
-
   "devDependencies": {
-    "browser-sync": "^2.7.3",
+    "browser-sync": "^2.7.6",
     "del": "^1.2.0",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-bump": "^0.3.1",
     "gulp-csslint": "^0.1.5",
     "gulp-sass": "^2.0.1",
-    "gulp-scss-lint": "^0.2.0",
-    "gulp-sourcemaps": "^1.5.2"
+    "gulp-scss-lint": "^0.2.0"
   },
-
   "keywords": [
     "css",
     "grid",

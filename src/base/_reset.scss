@@ -2,19 +2,19 @@
 //  RESET
 //===================================================================
 
-// Set `box-sizing` of root element to `border-box`. This setting
-// will be inherited by child elements. See: http://goo.gl/xT2qu0
-html {
-  box-sizing: border-box;
-}
-
-
 // Inherit `box-sizing` for easier overriding.
 // See: http://goo.gl/xT2qu0
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+
+// Set `box-sizing` of root element to `border-box`. This setting
+// will be inherited by child elements. See: http://goo.gl/xT2qu0
+html {
+  box-sizing: border-box;
 }
 
 

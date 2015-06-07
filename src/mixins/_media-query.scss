@@ -4,9 +4,9 @@
 
 $breakpoints: (
   small  : 0,
-  medium : 640px,
-  large  : 1200px,
-  xlarge : 1440px
+  medium : 740px,
+  large  : 980px,
+  xlarge : 1300px
 ) !default;
 
 
@@ -42,7 +42,7 @@ $breakpoint-prefixes: (
   }
 
   @if $max != null {
-    $max-width: media-query-width($max) - (1/16);
+    $max-width: media-query-width($max) - .01em;
     $query: $query + ' and (max-width: #{$max-width})';
   }
 

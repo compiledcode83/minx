@@ -1,11 +1,10 @@
 var browserSync = require('browser-sync'),
-    bump = require('gulp-bump'),
-    csslint = require('gulp-csslint'),
-    del = require('del'),
-    gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    scsslint = require('gulp-scss-lint');
-    //sourcemaps = require('gulp-sourcemaps');
+    bump        = require('gulp-bump'),
+    csslint     = require('gulp-csslint'),
+    del         = require('del'),
+    gulp        = require('gulp'),
+    sass        = require('gulp-sass'),
+    scsslint    = require('gulp-scss-lint');
 
 var manifests = ['./bower.json', './package.json'];
 
@@ -30,37 +29,35 @@ gulp.task('clean:target', function(done){
 
 
 gulp.task('lint:css', function() {
-  return gulp.src('./target/main.css')
+  return gulp.src('./target/**/*.css')
     .pipe(csslint('./.csslintrc'))
     .pipe(csslint.reporter());
 });
 
 
 gulp.task('lint:scss', function() {
-  return gulp.src('./src/mixins/*.scss')
+  return gulp.src('./src/**/*.scss')
     .pipe(scsslint({config: './.scss-lint.yml'}));
 });
 
 
 gulp.task('sass', function compileSass(){
-  return gulp.src('./src/*.scss')
-    //.pipe(sourcemaps.init())
+  return gulp.src('./test/*.scss')
     .pipe(sass({
       errLogToConsole: true,
       outputStyle: 'nested',
       precision: 10,
       sourceComments: false
     }))
-    //.pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./target'));
 });
 
 
-gulp.task('sync', function server(){
+gulp.task('sync', function(){
   browserSync
     .create()
     .init({
-      browser: "firefox",
+      browser: 'firefox',
       files: ['target/**/*', 'examples/**/*'],
       port: 7000,
       server: {
@@ -71,5 +68,5 @@ gulp.task('sync', function server(){
 
 
 gulp.task('default', gulp.series('clean:target', 'sass', function watch(){
-  gulp.watch('./src/**/*.scss', gulp.task('sass'));
+  gulp.watch(['./src/**/*.scss', './test/**/*.scss'], gulp.task('sass'));
 }));
