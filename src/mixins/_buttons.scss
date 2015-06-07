@@ -8,7 +8,7 @@
 //
 @mixin button-base {
   &[disabled] {
-    cursor: default; // [3]
+    cursor: default; // [1]
   }
 
   display: inline-block; // [2]
