@@ -2,9 +2,6 @@
 //  REM
 //===================================================================
 
-$root-font-size: 16px !default;
-
-
 @function rem($value) {
   $value: strip-unit($value);
 

@@ -18,4 +18,5 @@ html {
   -moz-osx-font-smoothing: grayscale;  // [3]
   -webkit-font-smoothing: antialiased; // [3]
   cursor: default;
+  background-color: $base-background-color;
 }

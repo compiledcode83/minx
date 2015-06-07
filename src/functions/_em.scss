@@ -2,9 +2,6 @@
 //  EM
 //===================================================================
 
-$root-font-size: 16px !default;
-
-
 @function em($value, $base: $root-font-size) {
   $value: strip-unit($value);
 
