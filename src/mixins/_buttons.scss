@@ -2,39 +2,16 @@
 //  BUTTONS
 //===================================================================
 
-// 1. Address `overflow` set to `hidden` in IE 8/9/10/11.
+// 1. Reset default cursor for disabled elements.
 //
-// 2. Make buttons inherit font styles - necessary when
-//    styling <input> elements as buttons.
-//
-// 3. Correct inability to style clickable `input` types in iOS.
-//
-// 4. Normalize styles for <a> elements styled as buttons.
-//
-// 5. Make it obvious that button is clickable.
-//
-// 6. Reset default cursor for disabled elements.
-//
-// 7. Remove inner padding and border in Firefox 4+.
+// 2. Normalize styles for <a> elements styled as buttons.
 //
 @mixin button-base {
-  overflow: visible;     // [1]
-  font-family: inherit;  // [2]
-
-  -webkit-appearance: button; // [3]
-
-  display: inline-block; // [4]
-  text-align: center;    // [4]
-  text-decoration: none; // [4]
-
-  cursor: pointer; // [5]
-
   &[disabled] {
-    cursor: default; // [6]
+    cursor: default; // [3]
   }
 
-  &::-moz-focus-inner {
-    border: 0;  // [7]
-    padding: 0; // [7]
-  }
+  display: inline-block; // [2]
+  text-align: center;    // [2]
+  text-decoration: none; // [2]
 }
