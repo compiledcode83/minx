@@ -1,0 +1,11 @@
+//===================================================================
+//  PREFIXED
+//===================================================================
+
+@mixin prefixed($property, $value, $vendors: webkit moz) {
+  @each $vendor in $vendors {
+    -#{$vendor}-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
