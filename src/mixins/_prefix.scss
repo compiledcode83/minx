@@ -2,7 +2,7 @@
 //  PREFIX
 //===================================================================
 
-@mixin prefixed($property, $value, $vendors: webkit moz) {
+@mixin prefix($property, $value, $vendors: webkit moz) {
   @each $vendor in $vendors {
     -#{$vendor}-#{$property}: $value;
   }
