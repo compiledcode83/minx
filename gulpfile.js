@@ -9,7 +9,7 @@ var browserSync = require('browser-sync'),
 var manifests = ['./bower.json', './package.json'];
 
 
-gulp.task('bump', function(){
+gulp.task('bump:patch', function(){
   return gulp.src(manifests)
     .pipe(bump({type: 'patch'}))
     .pipe(gulp.dest('./'));
