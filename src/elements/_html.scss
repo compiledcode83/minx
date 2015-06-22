@@ -17,6 +17,7 @@ html {
   -ms-text-size-adjust: 100%;          // [2]
   -moz-osx-font-smoothing: grayscale;  // [3]
   -webkit-font-smoothing: antialiased; // [3]
+  font-size: $root-font-size;
   cursor: default;
   background-color: $base-background-color;
 }
