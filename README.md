@@ -1,1 +1,1 @@
-### Sass lib
+### Minx
