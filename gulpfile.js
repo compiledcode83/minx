@@ -36,7 +36,7 @@ gulp.task('lint:css', function() {
 
 
 gulp.task('lint:scss', function() {
-  return gulp.src('./src/**/*.scss')
+  return gulp.src(['./src/**/*.scss', '!./src/_normalize.scss'])
     .pipe(scsslint({config: './.scss-lint.yml'}));
 });
 
