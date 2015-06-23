@@ -64,7 +64,7 @@ $grid-include-responsive: true !default;
 // @param {number} $gutter [$grid-gutter-size]
 //
 @mixin grid-column($float: left, $gutter: $grid-gutter-size) {
-  $half-gutter = $gutter / 2;
+  $half-gutter: $gutter / 2;
 
   float: $float;
   position: relative;
