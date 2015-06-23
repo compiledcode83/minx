@@ -1,14 +1,13 @@
 {
-  "name": "sass-lib",
+  "name": "minx",
   "version": "0.4.7",
-  "description": "Sass lib",
-  "homepage": "https://github.com/r-park/sass-lib",
-  "repository": "https://github.com/r-park/sass-lib.git",
+  "description": "Minx",
+  "homepage": "https://github.com/r-park/minx",
+  "repository": "https://github.com/r-park/minx.git",
   "author": "Richard Park",
   "license": "MIT",
   "ignore": [
     "node_modules",
-    "src",
     "target",
     "tmp",
     "**/.*",
