@@ -2,7 +2,7 @@
 //  FONT-AWESOME
 //===================================================================
 
-// @type {map} - mapping of icon names to icon content strings
+// @type {map} - mapping of icon names to unicode characters
 $fa-icons: (
   adjust: '\f042',
   adn: '\f170',
@@ -600,7 +600,9 @@ $fa-icons: (
 );
 
 
-// 1. `optimizelegibility` throws things off. @see #1094
+// 1. `optimizelegibility` throws things off.
+//    @see https://github.com/FortAwesome/Font-Awesome/issues/1094
+//
 // 2. Ensures no half-pixel rendering in Firefox
 //
 @mixin fa-icon-base {
