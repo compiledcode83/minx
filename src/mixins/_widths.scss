@@ -11,7 +11,7 @@ $width-util-denominators: (2, 3, 4, 5) !default;
 // @param {string} $prefix [$width-prefix]
 // @param {boolean} $inclusive [true]
 //
-@mixin width-classes($denominator, $prefix: $width-prefix, $inclusive: true) {
+@mixin width-classes($denominator, $prefix: $width-prefix, $delimiter: $width-delimiter, $inclusive: true) {
   @for $numerator from 1 through $denominator {
     @if $numerator < $denominator or $inclusive {
       .#{$prefix}#{$numerator}#{$width-delimiter}#{$denominator} {
