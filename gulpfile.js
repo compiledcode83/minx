@@ -3,8 +3,10 @@ var browserSync = require('browser-sync'),
     csslint     = require('gulp-csslint'),
     del         = require('del'),
     gulp        = require('gulp'),
+    mocha       = require('gulp-mocha'),
     sass        = require('gulp-sass'),
-    scsslint    = require('gulp-scss-lint');
+    scsslint    = require('gulp-scss-lint'),
+    gutil        = require('gulp-util');
 
 var manifests = ['./bower.json', './package.json'];
 
@@ -41,8 +43,17 @@ gulp.task('lint:scss', function() {
 });
 
 
+gulp.task('test', function(){
+  return gulp.src('./test/test.js')
+    .pipe(mocha({
+      reporter: 'spec'
+    }))
+    .on('error', gutil.log);
+});
+
+
 gulp.task('sass', function compileSass(){
-  return gulp.src('./test/*.scss')
+  return gulp.src('./examples/*.scss')
     .pipe(sass({
       errLogToConsole: true,
       outputStyle: 'nested',
@@ -68,5 +79,10 @@ gulp.task('sync', function(){
 
 
 gulp.task('default', gulp.series('clean:target', 'sass', function watch(){
-  gulp.watch(['./src/**/*.scss', './test/**/*.scss'], gulp.task('sass'));
+  gulp.watch(['./src/**/*.scss', './examples/**/*.scss'], gulp.task('sass'));
+}));
+
+
+gulp.task('tdd', gulp.series('test', function watch(){
+  gulp.watch(['./src/**/*.scss', './test/**/*.scss'], gulp.task('test'));
 }));
