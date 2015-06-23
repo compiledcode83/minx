@@ -2,6 +2,9 @@
 //  FONT-FEATURE-SETTINGS
 //===================================================================
 
+// @see http://dev.w3.org/csswg/css-fonts-3/#propdef-font-feature-settings
+// @param {list} $settings
+//
 @mixin font-feature-settings($settings...) {
   -webkit-font-feature-settings: $settings;
   -moz-font-feature-settings: $settings;

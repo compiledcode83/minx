@@ -3,7 +3,8 @@
 //===================================================================
 
 // Micro clearfix for containing floats.
-// See: http://goo.gl/zcbtis
+// @see: http://goo.gl/zcbtis
+//
 @mixin clearfix {
   &:after {
     clear: both;

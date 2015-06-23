@@ -2,6 +2,10 @@
 //  EM
 //===================================================================
 
+// @param {number} $value - target value in pixels
+// @param {number} $base [$root-font-size] - base font-size in pixels
+// @returns {number} with `em` unit or 0
+//
 @function em($value, $base: $root-font-size) {
   $value: strip-unit($value);
 

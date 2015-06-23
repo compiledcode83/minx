@@ -2,6 +2,9 @@
 //  REM
 //===================================================================
 
+// @param {number} $value - target value in pixels
+// @returns {number} with `rem` unit or 0
+//
 @function rem($value) {
   $value: strip-unit($value);
 

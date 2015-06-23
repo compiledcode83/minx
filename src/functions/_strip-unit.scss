@@ -2,6 +2,9 @@
 //  STRIP-UNIT
 //===================================================================
 
+// @param {number} $value
+// @returns {number} unitless number
+//
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }

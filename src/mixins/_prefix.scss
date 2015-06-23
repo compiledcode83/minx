@@ -2,10 +2,15 @@
 //  PREFIX
 //===================================================================
 
-@mixin prefix($property, $value, $vendors: webkit moz) {
+// @param {string} $property
+// @param {list} $values
+// @param {list} $vendors [webkit moz] - moz | ms | o | webkit
+// @returns vendor-prefixed and non-prefixed properties
+//
+@mixin prefix($property, $values, $vendors: webkit moz) {
   @each $vendor in $vendors {
-    -#{$vendor}-#{$property}: $value;
+    -#{$vendor}-#{$property}: $values;
   }
 
-  #{$property}: $value;
+  #{$property}: $values;
 }

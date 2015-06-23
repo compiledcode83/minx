@@ -11,13 +11,15 @@
 // 3. Make font rendering behaviour on OSX more consistent with
 //    other systems that do not use sub-pixel anti-aliasing.
 //
+// 4. Set root element font-size
+//
 html {
   min-height: 100%;                    // [1]
   -webkit-text-size-adjust: 100%;      // [2]
   -ms-text-size-adjust: 100%;          // [2]
   -moz-osx-font-smoothing: grayscale;  // [3]
   -webkit-font-smoothing: antialiased; // [3]
-  font-size: $root-font-size;
+  font-size: $root-font-size;          // [4]
   cursor: default;
   background-color: $base-background-color;
 }
