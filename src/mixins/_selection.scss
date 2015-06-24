@@ -2,24 +2,24 @@
 //  SELECTION
 //===================================================================
 
-// @param {boolean} $global [true]
+// @param {boolean} $current [true]
 //
-@mixin selection($global: true) {
-  @if $global {
-    ::-moz-selection {
-      @content;
-    }
-
-    ::selection {
-      @content;
-    }
-  }
-  @else {
+@mixin selection($current: false) {
+  @if $current {
     &::-moz-selection {
       @content;
     }
 
     &::selection {
+      @content;
+    }
+  }
+  @else {
+    ::-moz-selection {
+      @content;
+    }
+
+    ::selection {
       @content;
     }
   }

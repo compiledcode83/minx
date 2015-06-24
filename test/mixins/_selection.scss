@@ -1,0 +1,47 @@
+//===================================================================
+//  TEST : SELECTION
+//===================================================================
+
+@include test-module('mixin: selection') {
+
+  @include test('should add selection properties with provided content') {
+    @include assert('') {
+      @include input {
+        @include selection {
+          background: green;
+        };
+      }
+
+      @include expect {
+        ::-moz-selection {
+          background: green;
+        }
+
+        ::selection {
+          background: green;
+        }
+      }
+    }
+  }
+
+  @include test('should add selection properties to current selector') {
+    @include assert('') {
+      @include input {
+        @include selection(true) {
+          background: green;
+        };
+      }
+
+      @include expect {
+        &::-moz-selection {
+          background: green;
+        }
+
+        &::selection {
+          background: green;
+        }
+      }
+    }
+  }
+
+}

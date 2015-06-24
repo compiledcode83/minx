@@ -1,0 +1,49 @@
+//===================================================================
+//  TEST : PREFIX
+//===================================================================
+
+@include test-module('mixin: prefix') {
+
+  @include test('should return vendor-prefixed and non-prefixed versions of provided property') {
+    @include assert('') {
+      @include input {
+        @include prefix(border-radius, 3px);
+      }
+
+      @include expect {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  @include test('should apply provided prefixes') {
+    @include assert('') {
+      @include input {
+        @include prefix(border-radius, 3px, webkit ms);
+      }
+
+      @include expect {
+        -webkit-border-radius: 3px;
+        -ms-border-radius: 3px;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  @include test('should accept values as a list') {
+    @include assert('') {
+      @include input {
+        @include prefix(border-radius, 3px 3px 0 0);
+      }
+
+      @include expect {
+        -webkit-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
+      }
+    }
+  }
+
+}
