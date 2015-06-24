@@ -7,7 +7,6 @@
   "author": "Richard Park",
   "license": "MIT",
   "scripts": {
-    "coveralls": "gulp coveralls && rm -rf ./tmp",
     "test": "./node_modules/mocha/bin/mocha -R spec"
   },
   "devDependencies": {
