@@ -62,12 +62,12 @@ $flex-2012-values: (
 // Center child elements horizontally and vertically.
 // @param {string} $direction [row] - row | column
 //
-@mixin flex-center-all($direction: row) {
+@mixin flex-center-all($direction: null) {
   @include display-flex;
   @include align-items(center);
   @include justify-content(center);
 
-  @if $direction != row {
+  @if $direction != null {
     @include flex-direction($direction);
   }
 }
