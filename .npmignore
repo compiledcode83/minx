@@ -3,6 +3,7 @@
 #---------------------------------
 **/node_modules/
 target/
+test/
 tmp/
 
 
@@ -17,6 +18,7 @@ tmp/
 #---------------------------------
 .csslintrc
 .scss-lint.yml
+.travis-yml
 bower.json
 gulpfile.js
 
