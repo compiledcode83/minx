@@ -64,7 +64,10 @@ $flex-2012-values: (
 //
 @mixin flex-center-all($direction: row) {
   @include display-flex;
-  @include flex-direction($direction);
   @include align-items(center);
   @include justify-content(center);
+
+  @if $direction != row {
+    @include flex-direction($direction);
+  }
 }
