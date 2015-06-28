@@ -2,125 +2,7 @@
 //  TEST : FLEXBOX
 //===================================================================
 
-$spec-2012-values: (
-  baseline      : baseline,
-  center        : center,
-  flex-end      : end,
-  flex-start    : start,
-  space-around  : distribute,
-  space-between : justify,
-  stretch       : stretch,
-  inherit       : inherit
-);
-
-
 @include test-module('mixin: flexbox') {
-
-  @include test('display-flex: should add vendor-prefixed display values') {
-    @include assert('') {
-      @include input {
-        @include display-flex;
-      }
-
-      @include expect {
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-      }
-    }
-  }
-
-  @include test('display-inline-flex: should add vendor-prefixed display values') {
-    @include assert('') {
-      @include input {
-        @include display-inline-flex;
-      }
-
-      @include expect {
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-      }
-    }
-  }
-
-  @include test('align-items: should add vendor-prefixed `align-items` properties') {
-    @include assert('') {
-      @include input {
-        @include align-items;
-      }
-
-      @include expect {
-        -webkit-align-items: stretch;
-        -ms-flex-align: stretch;
-        align-items: stretch;
-      }
-    }
-  }
-
-  @include test('align-items: should set `-ms-align-items` with 2012 spec values') {
-    $keys: (flex-start, flex-end, center, baseline, stretch, inherit);
-
-    @each $key in $keys {
-      @include assert('') {
-        @include input {
-          @include align-items($key);
-        }
-
-        @include expect {
-          -webkit-align-items: $key;
-          -ms-flex-align: map-get($spec-2012-values, $key);
-          align-items: $key;
-        }
-      }
-    }
-  }
-
-  @include test('flex-direction: should add vendor-prefixed `flex-direction` properties') {
-    @include assert('') {
-      @include input {
-        @include flex-direction(column);
-      }
-
-      @include expect {
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
-      }
-    }
-  }
-
-  @include test('justify-content: should add vendor-prefixed `justify-content` properties') {
-    @include assert('') {
-      @include input {
-        @include justify-content(center);
-      }
-
-      @include expect {
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-      }
-    }
-  }
-
-  @include test('justify-content: should set `-ms-flex-pack` with 2012 spec values') {
-    $keys: (flex-start, flex-end, center, space-between, space-around, inherit);
-
-    @each $key in $keys {
-      @include assert('') {
-        @include input {
-          @include justify-content($key);
-        }
-
-        @include expect {
-          -webkit-justify-content: $key;
-          -ms-flex-pack: map-get($spec-2012-values, $key);
-          justify-content: $key;
-        }
-      }
-    }
-  }
 
   @include test('flex-center-all: should add `display-flex`, `align-items`, and `justify-content`') {
     @include assert('') {
@@ -129,19 +11,8 @@ $spec-2012-values: (
       }
 
       @include expect {
-        // display-flex
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-
-        // align-items
-        -webkit-align-items: center;
-        -ms-flex-align: center;
         align-items: center;
-
-        // justify-content
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
         justify-content: center;
       }
     }
@@ -154,24 +25,9 @@ $spec-2012-values: (
       }
 
       @include expect {
-        // display-flex
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-
-        // align-items
-        -webkit-align-items: center;
-        -ms-flex-align: center;
         align-items: center;
-
-        // justify-content
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
         justify-content: center;
-
-        // flex-direction
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
         flex-direction: column;
       }
     }

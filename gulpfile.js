@@ -8,7 +8,6 @@ var autoprefixer = require('autoprefixer-core'),
     postcss      = require('gulp-postcss'),
     sass         = require('gulp-sass'),
     scsslint     = require('gulp-scss-lint'),
-    sourcemaps   = require('gulp-sourcemaps'),
     gutil        = require('gulp-util');
 
 var manifests = ['./bower.json', './package.json'];
