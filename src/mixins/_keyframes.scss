@@ -1,0 +1,15 @@
+//===================================================================
+//  KEYFRAMES
+//===================================================================
+
+// @param {string} $name
+//
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
