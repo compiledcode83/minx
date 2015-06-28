@@ -169,7 +169,7 @@ $grid-include-responsive: true !default;
 
   // column widths
   @include width-classes($grid-total-columns);
-  @include width-util-classes();
+  //@include width-util-classes();
 
 
   // colum offset classes
@@ -199,7 +199,7 @@ $grid-include-responsive: true !default;
       @include media-query($min) {
         // column widths
         @include width-classes($grid-total-columns, $prefix);
-        @include width-util-classes($prefix);
+        //@include width-util-classes($prefix);
 
         // colum offset classes
         @if $offset {
