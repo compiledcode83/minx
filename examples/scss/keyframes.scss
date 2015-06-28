@@ -1,10 +1,7 @@
 /*===================================================================
    EXAMPLE : KEYFRAMES
 ===================================================================*/
-@import
-"../../lib/settings",
-"../../lib/functions",
-"../../lib/mixins";
+@import "imports";
 
 
 @include keyframes(example-1) {

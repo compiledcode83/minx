@@ -18,10 +18,7 @@ $breakpoint-prefixes: (
 ) !default;
 
 
-@import
-"../../lib/settings",
-"../../lib/functions",
-"../../lib/mixins";
+@import "imports";
 
 
 /* @include media-query(medium, large) */

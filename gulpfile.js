@@ -79,7 +79,7 @@ gulp.task('sync', function(){
 
 
 gulp.task('default', gulp.series('clean:examples', 'examples', function watch(){
-  gulp.watch(['./lib/**/*.scss', './examples/**/*.scss'], gulp.task('examples'));
+  gulp.watch(['./src/**/*.scss', './examples/**/*.scss'], gulp.task('examples'));
 }));
 
 
