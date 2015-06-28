@@ -1,0 +1,13 @@
+/*===================================================================
+   EXAMPLE : FONT-SMOOTHING
+===================================================================*/
+@import
+"../../lib/settings",
+"../../lib/functions",
+"../../lib/mixins";
+
+
+.example-1 {
+  /* @include font-smoothing; */
+  @include font-smoothing;
+}

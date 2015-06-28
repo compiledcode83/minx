@@ -1,0 +1,32 @@
+/*===================================================================
+   EXAMPLE : TRANSFORM
+===================================================================*/
+@import
+"../../lib/settings",
+"../../lib/functions",
+"../../lib/mixins";
+
+
+
+.example-1 {
+  /* @include transform(translateX(10px) rotate(10deg) translateY(5px)) */
+  @include transform(translateX(10px) rotate(10deg) translateY(5px));
+}
+
+
+.example-2 {
+  /* @include transform(translate3d(12px, 50%, 3em)) */
+  @include transform(translate3d(12px, 50%, 3em));
+}
+
+
+.example-3 {
+  /* @include transform-origin(2px 30% 10px) */
+  @include transform-origin(2px 30% 10px);
+}
+
+
+.example-4 {
+  /* @include transform-style(preserve-3d) */
+  @include transform-style(preserve-3d);
+}

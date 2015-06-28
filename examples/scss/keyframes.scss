@@ -1,0 +1,20 @@
+/*===================================================================
+   EXAMPLE : KEYFRAMES
+===================================================================*/
+@import
+"../../lib/settings",
+"../../lib/functions",
+"../../lib/mixins";
+
+
+@include keyframes(example-1) {
+  0% {
+    opacity: 0;
+    @include transform(scale(0.001));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+}

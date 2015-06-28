@@ -1,0 +1,32 @@
+/*===================================================================
+   EXAMPLE : TRANSITION
+===================================================================*/
+.example-1 {
+  /* @include transition(margin-left 4s ease-in-out) */
+  -webkit-transition: margin-left 4s ease-in-out;
+  transition: margin-left 4s ease-in-out; }
+
+.example-2 {
+  /* @include transition(margin-left 4s, color 1s) */
+  -webkit-transition: margin-left 4s, color 1s;
+  transition: margin-left 4s, color 1s; }
+
+.example-3 {
+  /* @include transition-delay(2s, 4ms) */
+  -webkit-transition-delay: 2s, 4ms;
+  transition-delay: 2s, 4ms; }
+
+.example-4 {
+  /* @include transition-duration(10s, 30s, 230ms) */
+  -webkit-transition-duration: 10s, 30s, 230ms;
+  transition-duration: 10s, 30s, 230ms; }
+
+.example-5 {
+  /* @include transition-property(all, -moz-specific, sliding) */
+  -webkit-transition-property: all, -moz-specific, sliding;
+  transition-property: all, -moz-specific, sliding; }
+
+.example-6 {
+  /* @include transition-timing-function(ease, step-start, cubic-bezier(0.1, 0.7, 1.0, 0.1)) */
+  -webkit-transition-timing-function: ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1);
+  transition-timing-function: ease, step-start, cubic-bezier(0.1, 0.7, 1, 0.1); }

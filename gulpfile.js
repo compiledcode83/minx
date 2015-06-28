@@ -25,8 +25,8 @@ gulp.task('bump:minor', function(){
 });
 
 
-gulp.task('clean:target', function(done){
-  del('./target/*', done);
+gulp.task('clean:examples', function(done){
+  del('./examples/css/*', done);
 });
 
 
@@ -52,15 +52,15 @@ gulp.task('test', function(){
 });
 
 
-gulp.task('sass', function compileSass(){
-  return gulp.src('./examples/*.scss')
+gulp.task('examples', function examples(){
+  return gulp.src('./examples/scss/*.scss')
     .pipe(sass({
       errLogToConsole: true,
       outputStyle: 'nested',
       precision: 10,
       sourceComments: false
     }))
-    .pipe(gulp.dest('./target'));
+    .pipe(gulp.dest('./examples/css'));
 });
 
 
@@ -78,8 +78,8 @@ gulp.task('sync', function(){
 });
 
 
-gulp.task('default', gulp.series('clean:target', 'sass', function watch(){
-  gulp.watch(['./src/**/*.scss', './examples/**/*.scss'], gulp.task('sass'));
+gulp.task('default', gulp.series('clean:examples', 'examples', function watch(){
+  gulp.watch(['./lib/**/*.scss', './examples/**/*.scss'], gulp.task('examples'));
 }));
 
 

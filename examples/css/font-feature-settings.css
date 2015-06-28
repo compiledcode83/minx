@@ -1,0 +1,14 @@
+/*===================================================================
+   EXAMPLE : FONT-FEATURE-SETTINGS
+===================================================================*/
+.example-1 {
+  /* @include font-feature-settings("c2sc", "smcp") */
+  -webkit-font-feature-settings: "c2sc", "smcp";
+  -moz-font-feature-settings: "c2sc", "smcp";
+  font-feature-settings: "c2sc", "smcp"; }
+
+.example-2 {
+  /* @include font-feature-settings("liga" 0) */
+  -webkit-font-feature-settings: "liga" 0;
+  -moz-font-feature-settings: "liga" 0;
+  font-feature-settings: "liga" 0; }

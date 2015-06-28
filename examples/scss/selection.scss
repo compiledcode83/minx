@@ -1,0 +1,23 @@
+/*===================================================================
+   EXAMPLE : SELECTION
+===================================================================*/
+@import
+"../../lib/settings",
+"../../lib/functions",
+"../../lib/mixins";
+
+
+/* @include selection { ... }; */
+.example-1 {
+  @include selection {
+    background: rgba(0, 0, 0, .2);
+  };
+}
+
+
+/* @include selection(true) { ... }; */
+.example-2 {
+  @include selection(true) {
+    background: rgba(0, 0, 0, .2);
+  };
+}

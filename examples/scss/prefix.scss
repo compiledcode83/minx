@@ -1,0 +1,18 @@
+/*===================================================================
+   EXAMPLE : PREFIX
+===================================================================*/
+@import
+"../../lib/settings",
+"../../lib/functions",
+"../../lib/mixins";
+
+
+.example-1 {
+  /* @include prefix(border-radius, 3px 4px 5px 6px); */
+  @include prefix(border-radius, 3px 4px 5px 6px);
+}
+
+.example-2 {
+  /* @include prefix(border-radius, 3px 4px 5px 6px, webkit moz o ms); */
+  @include prefix(border-radius, 3px 4px 5px 6px, webkit moz o ms);
+}

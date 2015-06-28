@@ -1,0 +1,22 @@
+/*===================================================================
+   EXAMPLE : TRANSFORM
+===================================================================*/
+.example-1 {
+  /* @include transform(translateX(10px) rotate(10deg) translateY(5px)) */
+  -webkit-transform: translateX(10px) rotate(10deg) translateY(5px);
+  transform: translateX(10px) rotate(10deg) translateY(5px); }
+
+.example-2 {
+  /* @include transform(translate3d(12px, 50%, 3em)) */
+  -webkit-transform: translate3d(12px, 50%, 3em);
+  transform: translate3d(12px, 50%, 3em); }
+
+.example-3 {
+  /* @include transform-origin(2px 30% 10px) */
+  -webkit-transform-origin: 2px 30% 10px;
+  transform-origin: 2px 30% 10px; }
+
+.example-4 {
+  /* @include transform-style(preserve-3d) */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }

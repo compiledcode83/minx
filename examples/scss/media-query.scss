@@ -1,0 +1,81 @@
+/*===================================================================
+   EXAMPLE : MEDIA-QUERY
+===================================================================*/
+
+$breakpoints: (
+  small  : 0,
+  medium : 740px,
+  large  : 980px,
+  xlarge : 1300px
+) !default;
+
+
+$breakpoint-prefixes: (
+  small  : sm-,
+  medium : md-,
+  large  : lg-,
+  xlarge : xl-
+) !default;
+
+
+@import
+"../../lib/settings",
+"../../lib/functions",
+"../../lib/mixins";
+
+
+/* @include media-query(medium, large) */
+@include media-query(medium, large) {
+  .example-1 {
+    font-size: 14px;
+  }
+};
+
+
+/* @include media-query(600, 800px) */
+@include media-query(600, 800px) {
+  .example-2 {
+    font-size: 14px;
+  }
+};
+
+
+/* @include media-query($max: medium) */
+@include media-query($max: medium) {
+  .example-3 {
+    font-size: 14px;
+  }
+};
+
+
+/* @include media-query(medium, $orientation: landscape) */
+@include media-query(medium, $orientation: landscape) {
+  .example-4 {
+    font-size: 14px;
+  }
+};
+
+
+/* @include media-query($type: print) */
+@include media-query($type: print) {
+  .example-5 {
+    color: #000;
+  }
+};
+
+
+/*
+  .example-6 {
+    font-size: 17px;
+    @include media-query(small) {
+      font-size: 14px;
+    };
+  }
+*/
+.example-6 {
+  font-size: 17px;
+
+  @include media-query(small) {
+    font-size: 14px;
+  };
+}
