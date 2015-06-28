@@ -20,6 +20,8 @@ $breakpoint-prefixes: (
 ) !default;
 
 
+// @requires {function} em
+//
 // @param {number} $value
 //
 @function media-query-width($value) {
