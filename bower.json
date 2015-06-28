@@ -8,7 +8,7 @@
   "license": "MIT",
   "ignore": [
     "node_modules",
-    "target",
+    "test",
     "tmp",
     "**/.*",
     "gulpfile.js",
