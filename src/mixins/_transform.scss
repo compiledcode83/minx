@@ -1,0 +1,23 @@
+//===================================================================
+//  TRANSFORM
+//===================================================================
+
+// @requires {mixin} prefix
+//
+@mixin transform($values) {
+  @include prefix(transform, $values);
+}
+
+
+// @requires {mixin} prefix
+//
+@mixin transform-origin($values) {
+  @include prefix(transform-origin, $values);
+}
+
+
+// @requires {mixin} prefix
+//
+@mixin transform-style($values) {
+  @include prefix(transform-style, $values);
+}
