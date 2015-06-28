@@ -8,7 +8,8 @@
   font-family: FontAwesome;
   font-size: inherit;
   text-rendering: auto;
-  transform: translate(0, 0); }
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0); }
 
 /* @include fa-icon(twitter) */
 .icon--twitter:before {
@@ -24,6 +25,7 @@
   font-family: FontAwesome;
   font-size: inherit;
   text-rendering: auto;
-  transform: translate(0, 0); }
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0); }
   .google-icon:before {
     content: ""; }

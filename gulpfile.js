@@ -1,11 +1,14 @@
-var browserSync = require('browser-sync'),
-    bump        = require('gulp-bump'),
-    csslint     = require('gulp-csslint'),
-    del         = require('del'),
-    gulp        = require('gulp'),
-    mocha       = require('gulp-mocha'),
-    sass        = require('gulp-sass'),
-    scsslint    = require('gulp-scss-lint'),
+var autoprefixer = require('autoprefixer-core'),
+    browserSync  = require('browser-sync'),
+    bump         = require('gulp-bump'),
+    csslint      = require('gulp-csslint'),
+    del          = require('del'),
+    gulp         = require('gulp'),
+    mocha        = require('gulp-mocha'),
+    postcss      = require('gulp-postcss'),
+    sass         = require('gulp-sass'),
+    scsslint     = require('gulp-scss-lint'),
+    sourcemaps   = require('gulp-sourcemaps'),
     gutil        = require('gulp-util');
 
 var manifests = ['./bower.json', './package.json'];
@@ -60,6 +63,7 @@ gulp.task('examples', function examples(){
       precision: 10,
       sourceComments: false
     }))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
     .pipe(gulp.dest('./examples/css'));
 });
 

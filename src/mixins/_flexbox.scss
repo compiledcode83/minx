@@ -2,75 +2,15 @@
 //  FLEXBOX
 //===================================================================
 
-// For IE10 : mapping of current spec values to March 22, 2012
-// version of spec.
-//
-// @see: http://www.w3.org/TR/2012/WD-css3-flexbox-20120322/
-//
-// @type {map}
-//
-$flex-2012-values: (
-  baseline      : baseline,
-  center        : center,
-  flex-end      : end,
-  flex-start    : start,
-  space-around  : distribute,
-  space-between : justify,
-  stretch       : stretch,
-  inherit       : inherit
-);
-
-
-@mixin display-flex {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-
-@mixin display-inline-flex {
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-
-// @param {string} $value [stretch] - flex-start | flex-end | center | baseline | stretch | inherit
-//
-@mixin align-items($value: stretch) {
-  -webkit-align-items: $value;
-  -ms-flex-align: map-get($flex-2012-values, $value);
-  align-items: $value;
-}
-
-
-// @param {string} $value [row] - row | row-reverse | column | column-reverse | inherit
-//
-@mixin flex-direction($value: row) {
-  -webkit-flex-direction: $value;
-  -ms-flex-direction: $value;
-  flex-direction: $value;
-}
-
-
-// @param {string} $value [flex-start] - flex-start | flex-end | center | space-between | space-around | inherit
-//
-@mixin justify-content($value: flex-start) {
-  -webkit-justify-content: $value;
-  -ms-flex-pack: map-get($flex-2012-values, $value);
-  justify-content: $value;
-}
-
-
 // Center child elements horizontally and vertically.
 // @param {string} $direction [row] - row | column
 //
 @mixin flex-center-all($direction: null) {
-  @include display-flex;
-  @include align-items(center);
-  @include justify-content(center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @if $direction != null {
-    @include flex-direction($direction);
+    flex-direction: $direction;
   }
 }
