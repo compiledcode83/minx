@@ -2,6 +2,10 @@
 //  FONT-AWESOME
 //===================================================================
 
+// ***NOTE*** font-awesome must be installed and included separately
+// @see https://github.com/FortAwesome/Font-Awesome
+
+
 // @type {map} - mapping of icon names to unicode characters
 $fa-icons: (
   adjust: '\f042',
@@ -616,13 +620,14 @@ $fa-icons: (
 
 // @param {string} $icon - the name of the desired icon
 // @param {boolean} $include-base [false] - whether to include base FontAwesome style properties
+// @param {boolean} $position [before] - pseudo-class: after | before
 //
-@mixin fa-icon($icon, $include-base: false) {
+@mixin fa-icon($icon, $include-base: false, $position: before) {
   @if $include-base == true {
     @include fa-icon-base;
   }
 
-  &:before {
+  &:#{$position} {
     content: map-get($fa-icons, $icon);
   }
 }
