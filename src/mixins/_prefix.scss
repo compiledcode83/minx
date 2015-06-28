@@ -4,10 +4,10 @@
 
 // @param {string} $property
 // @param {list} $values
-// @param {list} $vendors [webkit moz] - moz | ms | o | webkit
+// @param {list} $vendors [webkit] - space delimited list: moz ms o webkit
 // @returns vendor-prefixed and non-prefixed properties
 //
-@mixin prefix($property, $values, $vendors: webkit moz) {
+@mixin prefix($property, $values, $vendors: webkit) {
   @each $vendor in $vendors {
     -#{$vendor}-#{$property}: $values;
   }

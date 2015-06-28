@@ -12,7 +12,6 @@
 
       @include expect {
         -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
         border-radius: 3px;
       }
     }
@@ -40,7 +39,6 @@
 
       @include expect {
         -webkit-border-radius: 3px 3px 0 0;
-        -moz-border-radius: 3px 3px 0 0;
         border-radius: 3px 3px 0 0;
       }
     }
