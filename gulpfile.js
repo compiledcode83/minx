@@ -62,7 +62,7 @@ gulp.task('examples', function examples(){
       precision: 10,
       sourceComments: false
     }))
-    .pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR', 'Opera 12.1'] }) ]))
     .pipe(gulp.dest('./examples/css'));
 });
 

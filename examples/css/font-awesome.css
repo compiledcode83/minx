@@ -9,6 +9,7 @@
   font-size: inherit;
   text-rendering: auto;
   -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
           transform: translate(0, 0); }
 
 /* @include fa-icon(twitter) */
@@ -26,6 +27,7 @@
   font-size: inherit;
   text-rendering: auto;
   -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
           transform: translate(0, 0); }
   .google-icon:before {
     content: ""; }
