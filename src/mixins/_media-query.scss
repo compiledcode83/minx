@@ -20,11 +20,6 @@ $breakpoint-prefixes: (
 ) !default;
 
 
-// Default set to 1.3 for Google Nexus 7
-// @see http://bjango.com/articles/min-device-pixel-ratio
-$min-device-pixel-ratio: 1.3 !default;
-
-
 // @requires {function} em
 //
 // @param {number} $value
@@ -45,6 +40,7 @@ $min-device-pixel-ratio: 1.3 !default;
 // @param {number|null} $min [null]
 // @param {number|null} $max [null]
 // @param {string} $orientation [null]
+// @param {number} $pixel-ratio [null]
 // @param {string} $type [null]
 //
 @mixin media-query($min: null, $max: null, $orientation: null, $pixel-ratio: null, $type: 'screen') {
