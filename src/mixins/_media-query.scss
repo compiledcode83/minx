@@ -40,7 +40,7 @@ $breakpoint-prefixes: (
 // @param {number|null} $min [null]
 // @param {number|null} $max [null]
 // @param {string} $orientation [null]
-// @param {number} $pixel-ratio [null]
+// @param {number} $pixel-ratio [null] - @see http://bjango.com/articles/min-device-pixel-ratio/
 // @param {string} $type [null]
 //
 @mixin media-query($min: null, $max: null, $orientation: null, $pixel-ratio: null, $type: 'screen') {

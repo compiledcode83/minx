@@ -72,7 +72,8 @@ gulp.task('sync', function(){
     .create()
     .init({
       browser: 'firefox',
-      files: ['target/**/*', 'examples/**/*'],
+      files: ['examples/**/*'],
+      notify: false,
       port: 7000,
       server: {
         baseDir: '.'
