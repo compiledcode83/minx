@@ -10,19 +10,20 @@ var autoprefixer = require('autoprefixer-core'),
     scsslint     = require('gulp-scss-lint'),
     gutil        = require('gulp-util');
 
+
 var manifests = ['./bower.json', './package.json'];
-
-
-gulp.task('bump:patch', function(){
-  return gulp.src(manifests)
-    .pipe(bump({type: 'patch'}))
-    .pipe(gulp.dest('./'));
-});
 
 
 gulp.task('bump:minor', function(){
   return gulp.src(manifests)
     .pipe(bump({type: 'minor'}))
+    .pipe(gulp.dest('./'));
+});
+
+
+gulp.task('bump:patch', function(){
+  return gulp.src(manifests)
+    .pipe(bump({type: 'patch'}))
     .pipe(gulp.dest('./'));
 });
 
@@ -33,7 +34,7 @@ gulp.task('clean:examples', function(done){
 
 
 gulp.task('lint:css', function() {
-  return gulp.src('./target/**/*.css')
+  return gulp.src('./examples/css/*.css')
     .pipe(csslint('./.csslintrc'))
     .pipe(csslint.reporter());
 });
