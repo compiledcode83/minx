@@ -2,6 +2,11 @@
 //  UTILS : CLEARFIX
 //===================================================================
 
-.u-clear {
+%clearfix {
   @include clearfix;
+}
+
+
+.u-clear {
+  @extend %clearfix;
 }
