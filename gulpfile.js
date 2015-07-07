@@ -59,6 +59,7 @@ gulp.task('examples', function examples(){
   return gulp.src('./examples/scss/*.scss')
     .pipe(sass({
       errLogToConsole: true,
+      includePaths: ['./src'],
       outputStyle: 'nested',
       precision: 10,
       sourceComments: false
