@@ -614,7 +614,8 @@ $fa-icons: (
   font-family: FontAwesome;
   font-size: inherit;
   text-rendering: auto;       // [1]
-  transform: translate(0, 0); // [2]
+  text-decoration: none;
+  transform: translate(0, 0); // [3]
 }
 
 
