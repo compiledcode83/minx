@@ -1,94 +1,112 @@
-var autoprefixer = require('autoprefixer-core'),
-    browserSync  = require('browser-sync'),
-    bump         = require('gulp-bump'),
-    csslint      = require('gulp-csslint'),
-    del          = require('del'),
-    gulp         = require('gulp'),
-    mocha        = require('gulp-mocha'),
-    postcss      = require('gulp-postcss'),
-    sass         = require('gulp-sass'),
-    scsslint     = require('gulp-scss-lint'),
-    gutil        = require('gulp-util');
+const autoprefixer = require('autoprefixer');
+const browserSync  = require('browser-sync');
+const csslint      = require('gulp-csslint');
+const del          = require('del');
+const gulp         = require('gulp');
+const postcss      = require('gulp-postcss');
+const sass         = require('gulp-sass');
+const scsslint     = require('gulp-scss-lint');
 
 
-var manifests = ['./bower.json', './package.json'];
+//=========================================================
+//  PATHS
+//---------------------------------------------------------
+const paths = {
+  examples: {
+    css: 'examples/css',
+    sass: 'examples/scss'
+  },
+
+  src: {
+    sass: ['src/**/*.scss', '!src/_normalize.scss']
+  },
+
+  target: 'target'
+};
 
 
-gulp.task('bump:minor', function(){
-  return gulp.src(manifests)
-    .pipe(bump({type: 'minor'}))
-    .pipe(gulp.dest('./'));
-});
+//=========================================================
+//  CONFIG
+//---------------------------------------------------------
+const config = {
+  autoprefixer: {
+    browsers: ['last 3 versions', 'Firefox ESR']
+  },
+
+  browserSync: {
+    files: [`${paths.target}/**/*`],
+    notify: false,
+    open: false,
+    port: 3000
+  },
+
+  cssLintConfig: './.csslintrc',
+
+  sass: {
+    errLogToConsole: true,
+    includePaths: ['src'],
+    outputStyle: 'nested',
+    precision: 10,
+    sourceComments: false
+  },
+
+  scssLintConfig: './.scss-lint.yml'
+};
 
 
-gulp.task('bump:patch', function(){
-  return gulp.src(manifests)
-    .pipe(bump({type: 'patch'}))
-    .pipe(gulp.dest('./'));
-});
+//=========================================================
+//  TASKS
+//---------------------------------------------------------
+gulp.task('clean.examples', () => del(paths.examples.css));
 
 
-gulp.task('clean:examples', function(done){
-  del('./examples/css/*', done);
-});
+gulp.task('clean.target', () => del(paths.target));
 
 
-gulp.task('lint:css', function() {
-  return gulp.src('./examples/css/*.css')
-    .pipe(csslint('./.csslintrc'))
+gulp.task('lint.css', () => {
+  return gulp.src(`${paths.examples.css}/**/*.css`)
+    .pipe(csslint(config.cssLintConfig))
     .pipe(csslint.reporter());
 });
 
 
-gulp.task('lint:scss', function() {
-  return gulp.src(['./src/**/*.scss', '!./src/_normalize.scss'])
-    .pipe(scsslint({config: './.scss-lint.yml'}));
+gulp.task('lint.scss', () => {
+  return gulp.src(paths.src.sass)
+    .pipe(scsslint({config: config.scssLintConfig}));
 });
 
 
-gulp.task('test', function(){
-  return gulp.src('./test/test.js')
-    .pipe(mocha({
-      reporter: 'spec'
-    }))
-    .on('error', gutil.log);
+gulp.task('sass', () => {
+  return gulp.src(paths.src.sass)
+    .pipe(sass(config.sass))
+    .pipe(postcss([
+      autoprefixer(config.autoprefixer)
+    ]))
+    .pipe(gulp.dest(paths.target));
 });
 
 
-gulp.task('examples', function examples(){
-  return gulp.src('./examples/scss/*.scss')
-    .pipe(sass({
-      errLogToConsole: true,
-      includePaths: ['./src'],
-      outputStyle: 'nested',
-      precision: 10,
-      sourceComments: false
-    }))
-    .pipe(postcss([ autoprefixer({ browsers: ['last 3 versions', 'Firefox ESR', 'Opera 12.1'] }) ]))
-    .pipe(gulp.dest('./examples/css'));
+gulp.task('sass.examples', () => {
+  return gulp.src(`${paths.examples.sass}/**/*.scss`)
+    .pipe(sass(config.sass))
+    .pipe(postcss([
+      autoprefixer(config.autoprefixer)
+    ]))
+    .pipe(gulp.dest(paths.examples.css));
 });
 
 
-gulp.task('sync', function(){
-  browserSync
-    .create()
-    .init({
-      browser: 'firefox',
-      files: ['examples/**/*'],
-      notify: false,
-      port: 7000,
-      server: {
-        baseDir: '.'
-      }
-    });
+gulp.task('serve', done => {
+  browserSync.create()
+    .init(config.browserSync, done);
 });
 
 
-gulp.task('default', gulp.series('clean:examples', 'examples', function watch(){
-  gulp.watch(['./src/**/*.scss', './examples/**/*.scss'], gulp.task('examples'));
-}));
-
-
-gulp.task('tdd', gulp.series('test', function watch(){
-  gulp.watch(['./src/**/*.scss', './test/**/*.scss'], gulp.task('test'));
-}));
+gulp.task('default', gulp.series(
+  'clean.examples',
+  'clean.target',
+  'sass.examples',
+  function watch(){
+    gulp.watch(paths.src.sass, gulp.task('sass.examples'));
+  }
+));
