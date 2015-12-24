@@ -8,6 +8,7 @@
   font-family: FontAwesome;
   font-size: inherit;
   text-rendering: auto;
+  text-decoration: none;
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0); }
@@ -26,6 +27,7 @@
   font-family: FontAwesome;
   font-size: inherit;
   text-rendering: auto;
+  text-decoration: none;
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
           transform: translate(0, 0); }

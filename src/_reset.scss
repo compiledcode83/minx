@@ -10,13 +10,11 @@
   box-sizing: inherit;
 }
 
-
 // Set `box-sizing` of root element to `border-box`. This setting
 // will be inherited by child elements. See: http://goo.gl/xT2qu0
 html {
   box-sizing: border-box;
 }
-
 
 // Remove default margins
 blockquote,
@@ -39,13 +37,11 @@ ul {
   margin: 0;
 }
 
-
 // Remove default borders
 fieldset,
 iframe {
   border: 0;
 }
-
 
 // Remove default padding
 fieldset,
@@ -56,7 +52,6 @@ th,
 ul {
   padding: 0;
 }
-
 
 // HTML5 compatibility
 // Correct `block` display not defined for any HTML5 element in IE 8/9.
@@ -69,7 +64,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
 menu,
 nav,

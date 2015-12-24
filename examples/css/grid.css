@@ -6,8 +6,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: 1000px; }
-  .example-1:before,
-  .example-1:after {
+  .example-1:before, .example-1:after {
     content: '';
     display: table; }
   .example-1:after {
@@ -21,8 +20,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: 600px; }
-  .example-2:before,
-  .example-2:after {
+  .example-2:before, .example-2:after {
     content: '';
     display: table; }
   .example-2:after {

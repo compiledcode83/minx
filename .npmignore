@@ -2,14 +2,18 @@
 # Directories
 #---------------------------------
 **/node_modules/
-test/
+target/
 tmp/
 
 
 #---------------------------------
 # Extensions
 #---------------------------------
-**/*.{gz,log,rar,tar,zip}
+*.gz
+*.log
+*.rar
+*.tar
+*.zip
 
 
 #---------------------------------
@@ -18,7 +22,6 @@ tmp/
 .csslintrc
 .scss-lint.yml
 .travis-yml
-bower.json
 gulpfile.js
 
 
